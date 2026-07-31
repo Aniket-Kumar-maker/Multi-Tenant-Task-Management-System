@@ -20,7 +20,7 @@ public class User {
 
     @JsonBackReference
     @ManyToMany
-    @JoinTable(
+    @JoinTable( //Owner
             name = "team_users",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "team_id")
@@ -30,7 +30,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private boolean isDeleted = false;
+    @Column(name = "is_deleted")
+    private boolean deleted = false;
 
     public User() {
     }
@@ -80,10 +81,10 @@ public class User {
     }
 
     public boolean isDeleted() {
-        return isDeleted;
+        return deleted;
     }
 
     public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+        this.deleted = deleted;
     }
 }

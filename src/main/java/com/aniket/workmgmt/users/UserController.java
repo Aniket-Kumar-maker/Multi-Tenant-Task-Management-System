@@ -57,20 +57,19 @@ public class UserController {
         response.setSize(userPage.getSize());
         response.setTotalElements(userPage.getTotalElements());
         response.setTotalPages(userPage.getTotalPages());
-
         return response;
     }
 
-    @GetMapping("/{id}/teams")
+    @GetMapping("/{userId}/teams")
     public PageResponse<TeamResponse> getTeamsOfUser(
-            @PathVariable Long initiatorId,
+            @PathVariable Long userId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size
     ){
         Pageable pageable = PageRequest.of(page, size);
 
         Page<Team> teamPage =
-                userService.fetchTeamsPaginated(initiatorId, pageable);
+                userService.fetchTeamsPaginated(userId, pageable);
 
         List<TeamResponse> content = teamPage.stream()
                 .map(TeamMapper::toDto)
