@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class TaskUpdateRequest {
     private Long taskid;
-    private String Title;
+    private String title;
     private String description;
     private Priority priority;
     private LocalDate date;
@@ -21,11 +21,11 @@ public class TaskUpdateRequest {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDescription() {
