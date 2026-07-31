@@ -24,7 +24,9 @@ public class ActivityLogService {
         log.setContent(content);
         log.setUser(actor);        // who performed action
         log.setTask(task);
-        log.setTeam(task.getTeam()); // derive automatically
+        if(task!=null) {
+            log.setTeam(task.getTeam()); // derive automatically
+        }
         log.setCreatedAt(LocalDateTime.now());
         activityLogRepository.save(log);
     }
