@@ -10,6 +10,6 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByUserIdAndDeletedFalse(Long userId);
     List<Task> findByTeamIdAndDeletedFalse(Long teamId);
-    Page<Task> findByUserIdAndDeletedFalse(Long userId, Pageable pageable);
+    Page<Task> findByAssignedUserIdAndDeletedFalse(Long userId, Pageable pageable);
     Page<Task> findByTeamIdAndDeletedFalse(Long teamId, Pageable pageable);
 }
