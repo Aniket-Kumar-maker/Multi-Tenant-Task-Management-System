@@ -19,7 +19,7 @@ public class ActivityLog {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "task_id", nullable = true)
     private Task task;
 
     public Long getId() {
