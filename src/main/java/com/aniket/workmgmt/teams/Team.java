@@ -24,7 +24,8 @@ public class Team {
     @JsonIgnore
     private List<User> users;
 
-    private boolean isDeleted = false;
+    @Column(name = "is_deleted")
+    private boolean deleted = false;
 
     public Team(){
 
@@ -55,10 +56,10 @@ public class Team {
     }
 
     public boolean isDeleted() {
-        return isDeleted;
+        return deleted;
     }
 
     public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+        this.deleted = deleted;
     }
 }

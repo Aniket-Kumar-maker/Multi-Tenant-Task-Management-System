@@ -68,7 +68,7 @@ public class TeamService {
         return userRepository.findByTeamsContainingAndDeletedFalse(team, pageable);
     }
 
-    public void deleteTeam(Long userId, Long teamId){
+    public void deleteTeam(Long teamId, Long userId){
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found!"));
         Team team = teamRepository.findById(teamId).orElseThrow(() -> new RuntimeException("Team not found!"));
         if(team.isDeleted())
