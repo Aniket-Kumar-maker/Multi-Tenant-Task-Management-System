@@ -6,11 +6,13 @@ public class UserRequest {
     private String userName;
     private String userEmail;
     private Long orgId;
+    private String passWord;
 
-    public UserRequest(String name, String email, Long id){
+    public UserRequest(String name, String email, Long id, String passWord){
         userName = name;
         userEmail = email;
         orgId = id;
+        this.passWord = passWord;
     }
 
     public String getUserName() {
@@ -35,5 +37,13 @@ public class UserRequest {
 
     public void setOrgId(Long org) {
         this.orgId = org;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 }

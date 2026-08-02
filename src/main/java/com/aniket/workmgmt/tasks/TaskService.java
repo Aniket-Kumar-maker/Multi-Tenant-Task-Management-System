@@ -143,7 +143,7 @@ public class TaskService {
     }
 
     public Page<Task> getMyTaskPaginated(Long userId, Pageable pageable){
-        return taskRepository.findByUserIdAndDeletedFalse(userId,pageable);
+        return taskRepository.findByAssignedUserIdAndDeletedFalse(userId, pageable);
     }
 
     public List<Task> getTeamTasks(Long userId, Long teamId){

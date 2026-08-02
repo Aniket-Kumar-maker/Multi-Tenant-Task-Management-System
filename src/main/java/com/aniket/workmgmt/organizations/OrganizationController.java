@@ -48,7 +48,6 @@ public class OrganizationController {
         response.setSize(orgPage.getSize());
         response.setTotalElements(orgPage.getTotalElements());
         response.setTotalPages(orgPage.getTotalPages());
-
         return response;
     }
 }

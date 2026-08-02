@@ -46,4 +46,5 @@ public class UserResponse {
     public void setOrganizationName(String organizationName) {
         this.organizationName = organizationName;
     }
+
 }

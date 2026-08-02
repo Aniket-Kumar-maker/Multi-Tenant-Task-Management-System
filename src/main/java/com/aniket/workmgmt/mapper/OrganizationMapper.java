@@ -7,10 +7,8 @@ public class OrganizationMapper {
 
     public static OrganizationResponse toDto(Organization org){
         OrganizationResponse dto = new OrganizationResponse();
-
         dto.setId(org.getId());
         dto.setName(org.getName());
-
         return dto;
     }
 }

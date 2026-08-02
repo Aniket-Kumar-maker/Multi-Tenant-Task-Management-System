@@ -25,7 +25,4 @@ public class OrganizationService {
         return orgRepository.findAll(pageable);
     }
 
-    public List<Organization> getAllOrganizations() {
-        return orgRepository.findAll();
-    }
 }

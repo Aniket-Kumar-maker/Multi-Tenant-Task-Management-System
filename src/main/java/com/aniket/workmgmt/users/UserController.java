@@ -28,7 +28,7 @@ public class UserController {
 
     @PostMapping
     public UserResponse createUser(@RequestBody UserRequest request) {
-        return UserMapper.toDto(userService.createUser(request.getUserName(), request.getUserEmail(), request.getOrgId()));
+        return UserMapper.toDto(userService.createUser(request.getUserName(), request.getUserEmail(), request.getOrgId(), request.getPassWord()));
     }
 
     @GetMapping("/{id}")

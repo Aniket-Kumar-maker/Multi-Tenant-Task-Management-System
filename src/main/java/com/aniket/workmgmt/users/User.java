@@ -13,6 +13,7 @@ public class User {
     private Long id;
     private String name;
     private String email;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "organization_id") //user is the relationship owner actually containing the foreign key
@@ -86,5 +87,13 @@ public class User {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

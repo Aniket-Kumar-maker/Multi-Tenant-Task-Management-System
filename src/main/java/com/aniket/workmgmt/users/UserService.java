@@ -1,4 +1,5 @@
 package com.aniket.workmgmt.users;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import com.aniket.workmgmt.activitylogs.ActivityLogService;
 import com.aniket.workmgmt.organizations.Organization;
 import com.aniket.workmgmt.organizations.OrganizationRepository;
@@ -16,21 +17,24 @@ public class UserService {
     private final OrganizationRepository organizationRepository;
     private final ActivityLogService activityLogService;
     private final TeamRepository teamRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository uRep, OrganizationRepository oRep, ActivityLogService asL, TeamRepository tRep){
+    public UserService(UserRepository uRep, OrganizationRepository oRep, ActivityLogService asL, TeamRepository tRep, PasswordEncoder pEnc, PasswordEncoder passwordEncoder){
         this.userRepository = uRep;
         this.organizationRepository = oRep;
         this.activityLogService = asL;
         this.teamRepository = tRep;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public User createUser(String name, String email, Long org_id) {
+    public User createUser(String name, String email, Long org_id, String passWord) {
         Organization org = organizationRepository.findById(org_id)
                 .orElseThrow(() -> new RuntimeException("Organization not found"));
         User user = new User();
         user.setName(name);
         user.setEmail(email);
         user.setOrganization(org);
+        user.setPassword(passwordEncoder.encode(passWord));
 
         if (!userRepository.existsByOrganizationId(org_id))
             user.setRole(Role.ADMIN);
@@ -101,6 +105,7 @@ public class UserService {
         for (Team team : toDelete.getTeams()) {
             team.getUsers().remove(toDelete);
         }
+
         toDelete.setDeleted(true);
         String logMessage = String.format(
                 "%s deleted user %s",

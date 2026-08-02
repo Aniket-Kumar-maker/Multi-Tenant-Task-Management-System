@@ -20,6 +20,8 @@ public class ActivityLogController {
         this.activityLogService = asL;
     }
 
+
+
     @GetMapping("/tasks/{taskId}/activity")
     public PageResponse<ActivityLogResponse> getLogsTask(
             @PathVariable Long taskId,
