@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrganizationRepository extends JpaRepository<Organization,Long> {
     Page<Organization> findAll(Pageable pageable);
+
+    boolean existsByName(String organizationName);
 }
